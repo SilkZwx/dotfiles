@@ -38,6 +38,8 @@ else
 fi
 
 # 他のセットアップやインストールコマンドをここに追加
+git config --global user.name "SilkZwx"
+git config --global user.email "SilkZwx@users.noreply.github.com"
 
 echo "Dotfiles installation complete!"
 
