@@ -127,9 +127,16 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 # Git branch
-source /usr/local/etc/bash_completion.d/git-prompt.sh
-source /usr/local/etc/bash_completion.d/git-prompt
-source /usr/local/etc/bash_completion.d/git-completion.bash
+if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
+  . /usr/local/etc/bash_completion.d/git-prompt.sh
+fi
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+  . /usr/local/etc/bash_completion.d/git-completion.bash
+fi
+if [ -f /usr/lib/git-core/git-sh-prompt ]; then
+  . /usr/lib/git-core/git-sh-prompt
+fi
+
 GIT_PS1_SHOWDIRTYSTATE=true
 export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\n\$ '
 
