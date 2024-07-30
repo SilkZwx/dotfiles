@@ -41,5 +41,19 @@ fi
 git config --global user.name "SilkZwx"
 git config --global user.email "SilkZwx@users.noreply.github.com"
 
+# dotfiles リポジトリのディレクトリ
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# 既存の .bashrc をバックアップする
+if [ -f "$HOME/.bashrc" ]; then
+    mv "$HOME/.bashrc" "$HOME/.bashrc.backup"
+fi
+
+# dotfiles リポジトリの .bashrc をホームディレクトリにコピーする
+cp "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
+
+# シェルを再読み込みする
+source "$HOME/.bashrc"
+
 echo "Dotfiles installation complete!"
 
